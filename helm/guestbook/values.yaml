@@ -1,0 +1,32 @@
+namespace: guestbook
+
+images:
+  backend: image-registry.openshift-image-registry.svc:5000/guestbook/guestbook-backend:latest
+  frontend: image-registry.openshift-image-registry.svc:5000/guestbook/guestbook-frontend:latest
+  postgres: quay.io/fedora/postgresql-16:latest
+  redis: quay.io/kurs/redis:latest
+
+imagePullPolicy: IfNotPresent
+
+replicas:
+  backend: 2
+  frontend: 2
+
+storage:
+  postgresSize: 1Gi
+  redisSize: 1Gi
+
+db:
+  name: guestbook
+
+secrets:
+  dbUser: guestbook
+  dbPassword: superhemligt-losen        # ändra sen
+  redisPassword: annu-mer-hemligt       # ändra sen
+
+route:
+  enabled: true
+  host: ""   # låt OpenShift generera host
+  tls:
+    enabled: true
+    termination: edge

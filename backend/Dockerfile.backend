@@ -1,0 +1,25 @@
+# --- Build stage ---
+FROM registry.access.redhat.com/ubi10/go-toolset:10.0 AS builder
+
+WORKDIR /opt/app-root/src
+
+# Go-modulfiler
+COPY go.mod ./
+RUN go mod tidy
+
+# Resten av koden
+COPY . .
+
+# Bygg binären
+RUN go build -o guestbook-api .
+
+# --- Runtime stage ---
+FROM registry.access.redhat.com/ubi10-minimal:10.0
+
+WORKDIR /opt/app-root/src
+COPY --from=builder /opt/app-root/src/guestbook-api .
+
+ENV PORT=8080
+EXPOSE 8080
+
+CMD ["./guestbook-api"]

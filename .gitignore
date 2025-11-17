@@ -1,0 +1,18 @@
+@"
+# Go build artifacts
+backend/guestbook-api
+*.exe
+*.dll
+*.test
+
+# Editor / OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Helm files
+helm/guestbook/charts/
+helm/guestbook/tmp/
+helm/guestbook/*.tgz
+"@ | Out-File -Encoding UTF8 .gitignore
