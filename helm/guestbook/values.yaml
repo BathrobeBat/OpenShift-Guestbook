@@ -1,10 +1,10 @@
-namespace: guestbook
+namespace: grupp4
 
 images:
-  backend: image-registry.openshift-image-registry.svc:5000/guestbook/guestbook-backend:latest
-  frontend: image-registry.openshift-image-registry.svc:5000/guestbook/guestbook-frontend:latest
-  postgres: quay.io/fedora/postgresql-16:latest
-  redis: quay.io/kurs/redis:latest
+  backend: "quay.io/bathrobebat/guestbook:backend"
+  frontend: "quay.io/bathrobebat/guestbook:frontend-v2"
+  postgres: "quay.io/fedora/postgresql-16:latest"
+  redis: "quay.io/kurs/redis:latest"
 
 imagePullPolicy: IfNotPresent
 

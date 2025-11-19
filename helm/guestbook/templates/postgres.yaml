@@ -34,10 +34,16 @@ spec:
           volumeMounts:
             - name: data
               mountPath: /var/lib/pgsql/data
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "256Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
       volumes:
         - name: data
-          persistentVolumeClaim:
-            claimName: postgres-data
+          emptyDir: {}
 ---
 apiVersion: v1
 kind: Service

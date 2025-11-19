@@ -27,10 +27,16 @@ spec:
           volumeMounts:
             - name: data
               mountPath: /var/lib/redis/data
+          resources:
+            requests:
+              cpu: "50m"
+              memory: "128Mi"
+            limits:
+              cpu: "250m"
+              memory: "256Mi"
       volumes:
         - name: data
-          persistentVolumeClaim:
-            claimName: redis-data
+          emptyDir: {}
 ---
 apiVersion: v1
 kind: Service
