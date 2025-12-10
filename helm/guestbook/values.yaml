@@ -1,10 +1,10 @@
 namespace: grupp4
 
 images:
-  backend: "quay.io/bathrobebat/guestbook:backend"
-  frontend: "quay.io/bathrobebat/guestbook:frontend-v2"
-  postgres: "quay.io/fedora/postgresql-16:latest"
-  redis: "quay.io/kurs/redis:latest"
+  backend: "ghcr.io/bathrobebat/guestbook:backend"
+  frontend: "ghcr.io/bathrobebat/guestbook:frontend-v2"
+  postgres: "ghcr.io/fedora/postgresql-16:latest"
+  redis: "ghcr.io/kurs/redis:latest"
 
 imagePullPolicy: IfNotPresent
 
