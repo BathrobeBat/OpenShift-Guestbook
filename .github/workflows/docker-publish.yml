@@ -37,7 +37,6 @@ jobs:
           file: ./backend/Dockerfile.backend
           push: true
           tags: |
-            ghcr.io/bathrobebat/backend:latest
             ghcr.io/bathrobebat/backend:${{ github.sha }}
 
       ##################
@@ -50,5 +49,4 @@ jobs:
           file: ./frontend/Dockerfile.frontend
           push: true
           tags: |
-            ghcr.io/bathrobebat/frontend:latest
             ghcr.io/bathrobebat/frontend:${{ github.sha }}
