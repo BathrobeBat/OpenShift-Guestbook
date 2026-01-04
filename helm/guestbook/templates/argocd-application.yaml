@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: guestbook
+  namespace: openshift-gitops
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/BathrobeBat/openshift-guestbook.git
+    targetRevision: main
+    path: helm/guestbook
+    helm:
+      valueFiles:
+        - values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: grupp4
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=false
