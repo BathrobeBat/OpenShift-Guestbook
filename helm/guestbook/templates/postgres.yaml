@@ -32,7 +32,7 @@ spec:
             - name: POSTGRESQL_DATABASE
               value: "{{ .Values.db.name }}"
           volumeMounts:
-            - name: data
+            - name: postgres-storage
               mountPath: /var/lib/pgsql/data
           resources:
             requests:
@@ -42,8 +42,9 @@ spec:
               cpu: "500m"
               memory: "512Mi"
       volumes:
-        - name: data
-          emptyDir: {}
+        - name: postgres-storage
+          persistentVolumeClaim: 
+            claimName: postgres-data
 ---
 apiVersion: v1
 kind: Service
